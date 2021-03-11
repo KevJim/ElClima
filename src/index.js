@@ -6,7 +6,6 @@ const mountNode = document.getElementById("jsNode");
 const City = document.getElementById("city");
 const button = document.getElementById("search");
 
-
 const createCard = async () => {
     let searchCity = City.value;
     const response = await fetch(`${baseUrl}q=${searchCity}&appid=${id}`);
@@ -18,7 +17,8 @@ const createCard = async () => {
 
         const temperatura = document.createElement("h2");
         temperatura.className = "weather-card-temp";
-        temperatura.textContent = data.main.temp;
+        const ntemp = Math.floor(convTemp(data.main.temp))
+        temperatura.textContent = `${ntemp} °C`;
 
         const image = document.createElement("img");
         image.className = "weather-image";
@@ -38,5 +38,15 @@ const createCard = async () => {
         mountNode.append(card);
         City.value = "";
 };
+
+const convTemp = (temp) => {
+    const ntemp = temp - 273;
+    return ntemp;
+}
+
+const clean = document.querySelector("#reset");
+clean.addEventListener("click", () => {
+    mountNode.innerHTML = "";
+})
 
 button.addEventListener('click', createCard);
