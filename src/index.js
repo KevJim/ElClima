@@ -1,7 +1,7 @@
 import './styles/main.css';
 
 const id = '1cd38fdfb4e576db86733fbddac42215';
-const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?';
+const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?';
 const mountNode = document.getElementById("jsNode");
 const City = document.getElementById("city");
 const button = document.getElementById("search");
@@ -22,7 +22,7 @@ const createCard = async () => {
 
         const image = document.createElement("img");
         image.className = "weather-image";
-        image.src = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+        image.src = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
 
         const pronostico = document.createElement("p");
         pronostico.className = "weather-card-pron";
